@@ -1,0 +1,49 @@
+name: ServerGreeter
+version: 1.2
+main: com.skildust.ServerGreeter.Main
+author: sKildUsT
+softdepend: [ Permissions, PermissionsBukkit ]
+commands:
+  setJoinMessage:
+    description: Add join message for user
+    usage: /setJoinMessage [user] [message]
+    permission: greeter.set
+    permission-message: Insufficient permissions.
+  setLeaveMessage:
+    description: Add leave message for user
+    usage: /setLeaveMessage [user] [message]
+    permission: greeter.set
+    permission-message: Insufficient permissions.
+  clearMessages:
+    description: Clear messages for a user
+    usage: /clearMessages [user]
+    permission: greeter.clear
+    permission-message: Insufficient permissions.
+  listMessages:
+    description: List all messages
+    usage: /listMessages
+    permission: greeter.list
+    permission-message: Insufficient permissions.
+permissions:
+  greeter.*:
+    description: Grant all permissions
+    children:
+      greeter.set: true
+      greeter.remove: true
+      greeter.list: true
+  greeter.set:
+    description: Set greeter text for user
+    default: op
+    children:
+      ServerGreeter.setJoinMessage: true
+      ServerGreeter.setLeaveMessage: true
+  greeter.clear:
+    description: Remove greeter text for user
+    default: op
+    children:
+      ServerGreeter.clearMessages: true
+  greeter.list:
+    description: List greeter text for all users
+    default: true
+    children:
+      ServerGreeter.listMessages: true
