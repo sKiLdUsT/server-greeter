@@ -53,7 +53,7 @@ public class EventListener implements Listener {
             internalPlayer = new ServerPlayer(player.getUniqueId(), player.getName(), 0);
             players.put(internalPlayer.getUuid(), internalPlayer);
         }
-        if (internalPlayer.getLastPlayed() - Utils.getTimestampYesterday() < 0) {
+        if (internalPlayer.getLastPlayed() - Utils.getMidnight() < 0) {
             player.sendMessage(ChatColor.GREEN + "Good to see you today, have an apple!");
             ItemStack apple = new ItemStack(Material.APPLE, 1);
             ItemMeta appleMeta = apple.getItemMeta();
@@ -61,7 +61,9 @@ public class EventListener implements Listener {
             apple.setItemMeta(appleMeta);
             player.getInventory().addItem(apple);
         }
-        pluginClass.getLogger().log(new LogRecord(Level.ALL, "Player: " + internalPlayer.getName() + "\nLast Played: " + internalPlayer.getLastPlayed()));
+
+        internalPlayer.setLastPlayed((new Date()).getTime());
+        players.put(internalPlayer.getUuid(), internalPlayer);
     }
 
     @EventHandler
@@ -74,9 +76,5 @@ public class EventListener implements Listener {
         }
 
         event.setQuitMessage(ChatColor.GOLD + customMessage  + ChatColor.DARK_PURPLE +  " (Tschüss " + playerName + "!)");
-
-        ServerPlayer internalPlayer = players.get(event.getPlayer().getUniqueId());
-        internalPlayer.setLastPlayed((new Date()).getTime());
-        players.put(internalPlayer.getUuid(), internalPlayer);
     }
 }

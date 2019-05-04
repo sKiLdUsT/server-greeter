@@ -1,5 +1,5 @@
 name: ServerGreeter
-version: 1.2
+version: 1.3
 main: com.skildust.ServerGreeter.Main
 author: sKildUsT
 softdepend: [ Permissions, PermissionsBukkit ]
@@ -24,6 +24,11 @@ commands:
     usage: /listMessages
     permission: greeter.list
     permission-message: Insufficient permissions.
+  home:
+    description: Teleport to home village
+    usage: /home
+    permission: greeter.home
+    permission-message: Isufficient permissions.
 permissions:
   greeter.*:
     description: Grant all permissions
@@ -31,6 +36,7 @@ permissions:
       greeter.set: true
       greeter.remove: true
       greeter.list: true
+      greeter.home: true
   greeter.set:
     description: Set greeter text for user
     default: op
@@ -47,3 +53,8 @@ permissions:
     default: true
     children:
       ServerGreeter.listMessages: true
+  greeter.home:
+    description: Teleport to home village
+    default: true
+    children:
+      ServerGreeter.home: true

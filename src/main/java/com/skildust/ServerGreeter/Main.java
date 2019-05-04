@@ -11,5 +11,6 @@ public class Main extends JavaPlugin {
         getCommand("setLeaveMessage").setExecutor(new CommandSetLeaveMessage(this));
         getCommand("clearMessages").setExecutor(new CommandClearMessages(this));
         getCommand("listMessages").setExecutor(new CommandListMessages(this));
+        getCommand("home").setExecutor(new CommandHome(this));
     }
 }
