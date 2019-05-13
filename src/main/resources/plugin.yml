@@ -1,5 +1,5 @@
 name: ServerGreeter
-version: 1.3
+version: 1.4
 main: com.skildust.ServerGreeter.Main
 author: sKildUsT
 softdepend: [ Permissions, PermissionsBukkit ]

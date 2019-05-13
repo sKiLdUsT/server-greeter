@@ -3,9 +3,11 @@ package com.skildust.ServerGreeter;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.entity.Creeper;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.ChatColor;
@@ -16,8 +18,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
-import java.util.logging.Level;
-import java.util.logging.LogRecord;
 
 public class EventListener implements Listener {
     private Main pluginClass;
@@ -76,5 +76,13 @@ public class EventListener implements Listener {
         }
 
         event.setQuitMessage(ChatColor.GOLD + customMessage  + ChatColor.DARK_PURPLE +  " (Tschüss " + playerName + "!)");
+    }
+
+    @EventHandler
+    public void onCreatureSpawn(CreatureSpawnEvent event) {
+        if (event.getEntity().getName().equals("Creeper")) {
+            Creeper entity = (Creeper) event.getEntity();
+            entity.setExplosionRadius(0);
+        }
     }
 }
