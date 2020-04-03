@@ -7,10 +7,10 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class CommandHome implements CommandExecutor {
+public class CommandHub implements CommandExecutor {
     private Main pluginClass;
 
-    CommandHome(Main ref) {
+    CommandHub(Main ref) {
         pluginClass = ref;
     }
 
@@ -20,12 +20,12 @@ public class CommandHome implements CommandExecutor {
         Location loc = player.getLocation();
 
         loc.setWorld(Bukkit.getServer().getWorld("world"));
-        loc.setX(142);
-        loc.setY(67);
-        loc.setZ(-109);
+        loc.setX(0);
+        loc.setY(250);
+        loc.setZ(0);
 
         player.teleport(loc);
-        player.sendMessage("Teleported to home village.");
+        player.sendMessage("Teleported to hub.");
         return true;
     }
 }

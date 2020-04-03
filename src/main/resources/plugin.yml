@@ -1,8 +1,12 @@
 name: ServerGreeter
-version: 1.4
+version: 1.5
 main: com.skildust.ServerGreeter.Main
 author: sKildUsT
-softdepend: [ Permissions, PermissionsBukkit ]
+softdepend:
+  - Permissions
+  - PermissionsBukkit
+api-version: 1.15
+load: POSTWORLD
 commands:
   setJoinMessage:
     description: Add join message for user
@@ -24,10 +28,10 @@ commands:
     usage: /listMessages
     permission: greeter.list
     permission-message: Insufficient permissions.
-  home:
-    description: Teleport to home village
-    usage: /home
-    permission: greeter.home
+  hub:
+    description: Teleport to hub
+    usage: /hub
+    permission: greeter.hub
     permission-message: Isufficient permissions.
 permissions:
   greeter.*:
@@ -53,8 +57,8 @@ permissions:
     default: true
     children:
       ServerGreeter.listMessages: true
-  greeter.home:
-    description: Teleport to home village
+  greeter.hub:
+    description: Teleport to hub
     default: true
     children:
       ServerGreeter.home: true
